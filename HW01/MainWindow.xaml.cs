@@ -9,6 +9,8 @@ namespace Mvc
     public partial class MainWindow : Window
     {
         private float interval = 1;
+        private int numberCount = 20;
+        private int fibonacciCount = 30;
         private SafeCollection<int> safeCollection = new SafeCollection<int>();
 
         public MainWindow()
@@ -30,7 +32,7 @@ namespace Mvc
         {
             Random random = new Random();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < numberCount; i++)
             {
                 safeCollection.SafeAdd(random.Next(0, 100));
                 Thread threadGetItemsFromSafeCollection = new Thread(ViewCollection);
@@ -41,7 +43,7 @@ namespace Mvc
 
         private void RemoveAtItems()
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < numberCount; i++)
             {
                 if (safeCollection?.GetList().Count > 0)
                 {
@@ -59,14 +61,14 @@ namespace Mvc
             int secondNumber = 1;
             int currentNumber;
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i <= fibonacciCount; i++)
             {
                 currentNumber = firstNumber + secondNumber;
                 firstNumber = secondNumber;
                 secondNumber = currentNumber;
                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
                 {
-                    ResultViewTextBox.Text = $" {currentNumber}";
+                    ResultViewTextBox.Text = $"{i} - {currentNumber}";
                 }));
                 Thread.Sleep((int)(interval * 1000));
             }
