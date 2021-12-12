@@ -1,0 +1,21 @@
+﻿@{ 
+    ViewData["Title"] = "WorkTime"; 
+}
+
+@model WorkTimeViewModel
+
+
+<h1>График работы этой страницы</h1>
+
+<h3 class="WorkTime">Рабочее время</h3>
+<p>
+    <strong>С </strong> <code>@Model.StartWorkTime</code>
+    <strong> По </strong> <code>@Model.EndWorkTime</code>
+
+</p>
+
+<h3 class="lunchTime">Обеднее время</h3>
+<p>
+    <strong>С </strong> <code>@Model.StartLunchTime</code>
+    <strong> По </strong> <code>@Model.EndLunchTime</code>
+</p>
